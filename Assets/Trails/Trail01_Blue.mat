@@ -49,7 +49,7 @@ Material:
     - _Rotation: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color01: {r: 17.180496, g: 3.8015647, b: 2.5122423, a: 0.5686275}
+    - _Color01: {r: 0.6886792, g: 0.50472677, b: 0.11369702, a: 1}
     - _Color02: {r: 0.35421854, g: 0.36185107, b: 0.37735844, a: 1}
     - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _DistoritonSpeed: {r: -1, g: 0, b: 0, a: 0}

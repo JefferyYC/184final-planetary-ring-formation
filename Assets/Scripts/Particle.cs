@@ -14,6 +14,9 @@ public class Particle : MonoBehaviour
     private float rand_velocity = 0.2f;
     private float saturn_mass = 5.683f * (float)Math.Pow(10, 8);
     private float grav_const = 6.67f * (float) Math.Pow(10, -8);
+    private GameObject trail1;
+    private GameObject trail2;
+    private bool flag = false;
     
     // Start is called before the first frame update
     void Start()
@@ -24,14 +27,24 @@ public class Particle : MonoBehaviour
         Vector3 tangent = Vector3.Cross(diff, new Vector3(0, -1, 0));
         rb.velocity = tangent.normalized * init_velocity;
 
-        Vector3 random_dir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+        Vector3 random_dir = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0, UnityEngine.Random.Range(-1f, 1f));        
         rb.velocity += random_dir.normalized * rand_velocity;
-        
+        trail1 = this.transform.GetChild(0).gameObject;
+        trail2 = this.transform.GetChild(1).gameObject;
+        // trail1.GetComponent<TrailRenderer>().enabled = false;
+        trail1.SetActive(false);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!flag & (transform.position - gravityTarget.position).magnitude < 9)
+        {
+            trail1.SetActive(true);
+            trail2.SetActive(false);
+            flag = true;
+        }
+        
         ProcessGravity();
     }
 
@@ -57,9 +70,9 @@ public class Particle : MonoBehaviour
                 rb.AddForce(-particle_diff.normalized * grav_const / dist);
             }
         }
-
+        
         rb.AddForce(gm.forceMap[gm.calcOctant(this.transform)]);
-
+        
 
         // caculate force from nearby blocks
         /*

@@ -36,7 +36,7 @@ public class Particle2 : MonoBehaviour
         Vector3 diff = transform.position - gravityTarget.position;
         rb.AddForce(-diff.normalized * saturn_mass * grav_const / (float)Math.Pow(diff.magnitude, 2));
 
-
+        
         // constant oct block implementation
         List<GameObject> pArray = gm.particleArray;
         LinkedList<int> block = gm.octantMap[gm.calcOctant(this.transform)];
@@ -52,7 +52,7 @@ public class Particle2 : MonoBehaviour
                 rb.AddForce(-particle_diff.normalized * grav_const / dist);
             }
         }
-
+        
         rb.AddForce(gm.forceMap[gm.calcOctant(this.transform)]);
 
 

@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     void CreateParticle()
     {
         GameObject cur;
-        if (count <= 1499)
+        if (count <= 2499)
         {
             if (UnityEngine.Random.Range(0f, 1f) < 0.75)
             {
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-        }
+        } 
     }
 
     public int getDim()
